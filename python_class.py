@@ -3,7 +3,7 @@ from datetime import datetime
 
 class Employee:
     # 클래스 속성 정의
-    raise_amount: int = 1.04
+    raise_amount: float = 1.04
 
     # 인스턴스 변수할당 코드
     def __init__(self, first: str, last: str, pay: int):
@@ -21,10 +21,10 @@ class Employee:
     @classmethod
     def from_string(cls, emp_str: str):
         first, last, pay = emp_str.split('-')
-        return cls(first, last, pay)
+        return cls(first, last, int(pay))
 
     @classmethod
-    def update_raise_amount(cls, raise_amount: int):
+    def update_raise_amount(cls, raise_amount: float):
         cls.raise_amount = raise_amount
 
     # staticmethod는 인터프리터가 따로 넘겨주는 인자가 없다.
