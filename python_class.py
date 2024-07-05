@@ -1,6 +1,9 @@
+from datetime import datetime
+
+
 class Employee:
     # 클래스 속성 정의
-    raise_amount = 1.04
+    raise_amount: int = 1.04
 
     # 인스턴스 변수할당 코드
     def __init__(self, first: str, last: str, pay: int):
@@ -16,18 +19,18 @@ class Employee:
 
     # classmethod로 선언된 함수에는 첫번쨰 인자로 클래스 자체가 넘어온다.
     @classmethod
-    def from_string(cls, emp_str):
+    def from_string(cls, emp_str: str):
         first, last, pay = emp_str.split('-')
         return cls(first, last, pay)
 
     @classmethod
-    def update_raise_amount(cls, raise_amount):
+    def update_raise_amount(cls, raise_amount: int):
         cls.raise_amount = raise_amount
 
     # staticmethod는 인터프리터가 따로 넘겨주는 인자가 없다.
     # 보통 유틸성 함수를 사용할때 활용한다.
     @staticmethod
-    def is_workday(day) -> bool:
+    def is_workday(day: datetime) -> bool:
         if day.weekday() == 5 or day.weekday() == 6:
             return False
         else:
